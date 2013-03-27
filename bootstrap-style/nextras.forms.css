@@ -1,0 +1,10 @@
+.input-group-range input {
+  display: inline-block;
+  width: auto;
+}
+.input-group-range input:focus {
+  position: relative;
+}
+.input-group-range input:not(:first-child) {
+  margin-left: -1px;
+}

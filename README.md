@@ -5,6 +5,8 @@ List of components:
 - **MultiOptionList** - multiple option control rendered as checkbox list
 - **DatePicker** - date picker, represented by DateTime object
 - **DateTimePicker** - date & time picker, represented by DateTime object
+- **DateRangePicker**
+- **DateTimeRangePicker**
 
 ## Installation
 
@@ -37,6 +39,19 @@ Container::extensionMethod('addDatePicker', function (Container $container, $nam
 Container::extensionMethod('addDateTimePicker', function (Container $container, $name, $label = NULL) {
 	return $container[$name] = new Controls\DateTimePicker($label);
 });
+Container::extensionMethod('addDateRangePicker', function(Container $container, $name, $label = NULL) {
+	$input = $container[$name] = new Controls\DateRangePicker($label);
+	$input['min']->getControlPrototype()->placeholder = 'Start date';
+	$input['max']->getControlPrototype()->placeholder = 'End date';
+	return $input;
+});
+Container::extensionMethod('addDateTimeRangePicker', function(Container $container, $name, $label = NULL) {
+	$input = $container[$name] = new Controls\DateTimeRangePicker($label);
+	$input['min']->getControlPrototype()->placeholder = 'Start date & time';
+	$input['max']->getControlPrototype()->placeholder = 'End date & time';
+	return $input;
+});
+
 ```
 
 Configure macros auto-install in your `config.neon`:
